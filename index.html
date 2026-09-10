@@ -297,7 +297,7 @@
 
     <div class="card">
       <h3>₿ Bitcoin</h3>
-      <div class="price">$80,000</div>
+      <div class="price" id="btc-price">Loading...</div>
       <div class="up">Market Watch</div>
       <div class="muted">BTC / USDT</div>
 
@@ -472,6 +472,26 @@
 <footer>
   © 2026 Market Pulse — Market News & Trading Updates
 </footer>
+<script>
+async function updateBTC() {
+  try {
+    const response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
+    const data = await response.json();
 
+    const price = Number(data.price).toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 2
+    });
+
+    document.getElementById("btc-price").textContent = price;
+  } catch (error) {
+    document.getElementById("btc-price").textContent = "Live data unavailable";
+  }
+}
+
+updateBTC();
+setInterval(updateBTC, 10000);
+</script>
 </body>
 </html>
