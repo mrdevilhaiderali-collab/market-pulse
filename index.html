@@ -4,316 +4,364 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Market Pulse | Live Stocks, Crypto, Gold & Forex News</title>
-<meta name="description" content="Market Pulse delivers the latest stock market, crypto, gold and forex news, market alerts and trading insights.">
+<title>Market Pulse | Global Market News & Trading Alerts</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:#0b0f14;
-color:#f5f7fa;
-line-height:1.6;
+* {
+    box-sizing: border-box;
 }
 
-a{text-decoration:none;color:inherit}
-
-.header{
-background:#10161e;
-border-bottom:1px solid #26313d;
-padding:18px 6%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:10;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080d14;
+    color: white;
 }
 
-.logo{
-font-size:26px;
-font-weight:800;
-letter-spacing:.5px;
+header {
+    background: #0d141d;
+    padding: 20px 7%;
+    border-bottom: 1px solid #263342;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo span{color:#00d084}
-
-.nav a{
-margin-left:22px;
-font-size:14px;
-color:#b9c3ce;
+.logo {
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.nav a:hover{color:#00d084}
-
-.hero{
-padding:70px 6% 55px;
-background:linear-gradient(135deg,#111923,#080b10);
+.logo span {
+    color: #00e676;
 }
 
-.hero h1{
-font-size:48px;
-max-width:800px;
-line-height:1.1;
-margin-bottom:18px;
+nav a {
+    color: #c7d0da;
+    margin-left: 25px;
+    text-decoration: none;
+    font-size: 15px;
 }
 
-.hero h1 span{color:#00d084}
-
-.hero p{
-max-width:680px;
-color:#aeb8c4;
-font-size:18px;
+nav a:hover {
+    color: #00e676;
 }
 
-.alert{
-margin:28px 6%;
-padding:18px 22px;
-background:#151c25;
-border:1px solid #263442;
-border-left:4px solid #00d084;
-border-radius:10px;
+.hero {
+    padding: 80px 7%;
+    background: linear-gradient(120deg, #101a26, #080d14);
 }
 
-.alert strong{color:#00d084}
-
-.section{
-padding:35px 6%;
+.hero h1 {
+    font-size: 50px;
+    max-width: 800px;
+    margin: 0 0 20px;
 }
 
-.section-title{
-font-size:25px;
-margin-bottom:22px;
+.hero h1 span {
+    color: #00e676;
 }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
+.hero p {
+    max-width: 700px;
+    color: #aeb8c4;
+    font-size: 19px;
 }
 
-.card{
-background:#111821;
-border:1px solid #26313d;
-border-radius:12px;
-padding:22px;
-transition:.2s;
+.alert {
+    margin: 25px 7%;
+    padding: 18px;
+    background: #111b26;
+    border-left: 4px solid #00e676;
+    border-radius: 8px;
 }
 
-.card:hover{
-transform:translateY(-3px);
-border-color:#00d084;
+.alert b {
+    color: #00e676;
 }
 
-.card h3{
-font-size:17px;
-margin-bottom:10px;
+section {
+    padding: 35px 7%;
 }
 
-.price{
-font-size:25px;
-font-weight:700;
-margin:8px 0;
+h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
 }
 
-.green{color:#00d084}
-.red{color:#ff5c6c}
-
-.chart{
-margin-top:20px;
-height:110px;
-background:
-linear-gradient(135deg,transparent 48%,#00d084 49%,#00d084 51%,transparent 52%),
-linear-gradient(155deg,transparent 54%,#00d084 55%,#00d084 57%,transparent 58%);
-border-bottom:1px solid #34414e;
-opacity:.8;
+.markets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
 }
 
-.news{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
+.market {
+    background: #111923;
+    border: 1px solid #273544;
+    border-radius: 12px;
+    padding: 25px;
 }
 
-.news-card{
-background:#111821;
-border:1px solid #26313d;
-padding:24px;
-border-radius:12px;
+.market h3 {
+    margin-top: 0;
 }
 
-.news-card .tag{
-font-size:12px;
-color:#00d084;
-font-weight:bold;
-text-transform:uppercase;
+.number {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 15px 0;
 }
 
-.news-card h3{
-font-size:20px;
-margin:10px 0;
+.up {
+    color: #00e676;
 }
 
-.news-card p{
-color:#aeb8c4;
-font-size:14px;
+.chart {
+    height: 90px;
+    margin-top: 20px;
+    border-bottom: 2px solid #00e676;
+    background: linear-gradient(
+        150deg,
+        transparent 20%,
+        #00e676 21%,
+        transparent 22%,
+        transparent 40%,
+        #00e676 41%,
+        transparent 42%,
+        transparent 60%,
+        #00e676 61%,
+        transparent 62%,
+        transparent 80%,
+        #00e676 81%,
+        transparent 82%
+    );
 }
 
-.button{
-display:inline-block;
-margin-top:15px;
-padding:10px 17px;
-background:#00d084;
-color:#06100b;
-border-radius:7px;
-font-weight:700;
-font-size:14px;
+.news {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-.footer{
-margin-top:40px;
-padding:35px 6%;
-border-top:1px solid #26313d;
-background:#080b10;
-color:#8793a0;
-text-align:center;
-font-size:14px;
+.news-box {
+    background: #111923;
+    border: 1px solid #273544;
+    border-radius: 12px;
+    padding: 25px;
 }
 
-@media(max-width:900px){
-.cards{grid-template-columns:repeat(2,1fr)}
-.news{grid-template-columns:1fr}
-.hero h1{font-size:38px}
+.tag {
+    color: #00e676;
+    font-size: 13px;
+    font-weight: bold;
 }
 
-@media(max-width:600px){
-.header{padding:15px 5%}
-.nav{display:none}
-.hero{padding:50px 5%}
-.hero h1{font-size:34px}
-.section{padding:30px 5%}
-.cards{grid-template-columns:1fr}
-.alert{margin:22px 5%}
+.news-box h3 {
+    font-size: 21px;
+}
+
+.news-box p {
+    color: #aeb8c4;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 11px 18px;
+    background: #00e676;
+    color: #06100a;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 35px;
+    text-align: center;
+    background: #05090e;
+    border-top: 1px solid #263342;
+    color: #8995a3;
+}
+
+@media (max-width: 900px) {
+    .markets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .news {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        display: none;
+    }
+
+    .markets {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 55px 7%;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-<div class="logo">MARKET <span>PULSE</span></div>
+<header>
 
-<nav class="nav">
+<div class="logo">
+MARKET <span>PULSE</span>
+</div>
+
+<nav>
 <a href="#markets">Markets</a>
 <a href="#news">News</a>
 <a href="#alerts">Alerts</a>
 </nav>
+
 </header>
 
-<section class="hero">
-<h1>Global Markets.<br><span>Real-Time Trading Intelligence.</span></h1>
+<div class="hero">
+
+<h1>
+Global Markets.<br>
+<span>Trading Starts Here.</span>
+</h1>
+
 <p>
-Stay ahead with market news, trading alerts and insights covering Stocks, Crypto, Gold and Forex.
+Latest market news, trading alerts and market insights covering Stocks, Crypto, Gold and Forex.
 </p>
-</section>
+
+</div>
 
 <div class="alert" id="alerts">
-<strong>⚡ MARKET ALERT:</strong>
-Markets are moving fast. Watch price action, momentum and major economic events.
+
+<b>⚡ MARKET ALERT</b><br>
+Stay updated with the latest market movements and important trading levels.
+
 </div>
 
-<section class="section" id="markets">
-<h2 class="section-title">📊 Market Watch</h2>
+<section id="markets">
 
-<div class="cards">
+<h2>📊 Market Watch</h2>
 
-<div class="card">
+<div class="markets">
+
+<div class="market">
 <h3>₿ Bitcoin</h3>
-<div class="price">$80K</div>
-<div class="green">▲ Crypto Market</div>
+<div class="number">$80K</div>
+<div class="up">▲ Crypto Market</div>
 <div class="chart"></div>
 </div>
 
-<div class="card">
+<div class="market">
 <h3>📈 S&P 500</h3>
-<div class="price">Market</div>
-<div class="green">● US Stocks</div>
+<div class="number">US Stocks</div>
+<div class="up">● Market Watch</div>
 <div class="chart"></div>
 </div>
 
-<div class="card">
-<h3>🥇 Gold XAU/USD</h3>
-<div class="price">Gold</div>
-<div class="green">● Precious Metals</div>
+<div class="market">
+<h3>🥇 Gold</h3>
+<div class="number">XAU/USD</div>
+<div class="up">● Gold Market</div>
 <div class="chart"></div>
 </div>
 
-<div class="card">
-<h3>💱 EUR/USD</h3>
-<div class="price">Forex</div>
-<div class="green">● Currency Market</div>
+<div class="market">
+<h3>💱 Forex</h3>
+<div class="number">EUR/USD</div>
+<div class="up">● Currency Market</div>
 <div class="chart"></div>
 </div>
 
 </div>
+
 </section>
 
-<section class="section" id="news">
-<h2 class="section-title">📰 Latest Market Updates</h2>
+<section id="news">
+
+<h2>📰 Latest Market News</h2>
 
 <div class="news">
 
-<article class="news-card">
-<div class="tag">Crypto</div>
-<h3>Bitcoin Nears a Major Resistance Zone</h3>
-<p>
-Bitcoin traders are watching the $80K area as the next major price level.
-</p>
-<a class="button" href="https://tradingjournaledge.blogspot.com/" target="_blank">
-Read Market News →
-</a>
-</article>
+<div class="news-box">
 
-<article class="news-card">
-<div class="tag">Stocks</div>
-<h3>US Stocks in Focus</h3>
-<p>
-Investors are watching economic data, interest-rate expectations and corporate earnings.
-</p>
-<a class="button" href="https://tradingjournaledge.blogspot.com/" target="_blank">
-Read Market News →
-</a>
-</article>
+<div class="tag">CRYPTO</div>
 
-<article class="news-card">
-<div class="tag">Global Markets</div>
+<h3>Bitcoin Traders Watch the $80K Level</h3>
+
+<p>
+Bitcoin remains in focus as traders watch key resistance and momentum.
+</p>
+
+<a class="button" href="https://tradingjournaledge.blogspot.com/" target="_blank">
+Read More →
+</a>
+
+</div>
+
+<div class="news-box">
+
+<div class="tag">STOCKS</div>
+
+<h3>US Stock Market in Focus</h3>
+
+<p>
+Investors continue watching economic data, interest rates and market momentum.
+</p>
+
+<a class="button" href="https://tradingjournaledge.blogspot.com/" target="_blank">
+Read More →
+</a>
+
+</div>
+
+<div class="news-box">
+
+<div class="tag">GLOBAL MARKETS</div>
+
 <h3>What Traders Are Watching Now</h3>
+
 <p>
-Follow the latest developments across stocks, crypto, gold and forex markets.
+Follow important developments across stocks, crypto, gold and forex.
 </p>
+
 <a class="button" href="https://tradingjournaledge.blogspot.com/" target="_blank">
-Read Market News →
+Read More →
 </a>
-</article>
 
 </div>
-</section>
 
-<section class="section">
-<h2 class="section-title">🌎 Market Pulse</h2>
-
-<div class="card">
-<p style="color:#aeb8c4">
-Market Pulse is your destination for global market updates, trading news,
-crypto alerts, stock market developments, gold analysis and forex insights.
-</p>
 </div>
+
 </section>
 
-<footer class="footer">
-<p>© 2026 Market Pulse — Global Markets & Trading News</p>
-<p>Stocks • Crypto • Gold • Forex</p>
+<footer>
+
+<b>MARKET PULSE</b>
+
+<br><br>
+
+Stocks • Crypto • Gold • Forex
+
+<br><br>
+
+© 2026 Market Pulse. All Rights Reserved.
+
 </footer>
 
 </body>
