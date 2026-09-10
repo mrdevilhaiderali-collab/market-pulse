@@ -1,492 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Market Pulse | Live Market News & Trading Alerts</title>
+  <title>Market Pulse | Latest Market News & Trading Alerts</title>
 
-<style>
-*{box-sizing:border-box}
+  <meta name="description" content="Market Pulse provides the latest market news, trading updates, crypto, stocks, gold and forex market alerts.">
+  <meta name="author" content="SYED HAIDER ALI ZAIDI">
 
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#080d13;
-color:#fff;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-header{
-background:#0d141d;
-border-bottom:1px solid #263442;
-padding:18px 6%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background: #07111d;
+      color: #ffffff;
+      line-height: 1.6;
+    }
 
-.logo{
-font-size:28px;
-font-weight:800;
-}
+    header {
+      background: #0b1726;
+      border-bottom: 1px solid #1c3148;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-.logo span{
-color:#00e676;
-}
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
 
-nav a{
-color:#c7d0da;
-text-decoration:none;
-margin-left:22px;
-font-size:14px;
-}
+    .logo span {
+      color: #35d0ba;
+    }
 
-nav a:hover{
-color:#00e676;
-}
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 14px;
+    }
 
-.hero{
-padding:65px 6%;
-background:linear-gradient(135deg,#111c28,#080d13);
-}
+    nav a:hover {
+      color: #35d0ba;
+    }
 
-.hero h1{
-font-size:46px;
-line-height:1.1;
-margin:0 0 18px;
-}
+    .hero {
+      padding: 80px 7%;
+      text-align: center;
+      background: linear-gradient(135deg, #0a1929, #07111d);
+    }
 
-.hero h1 span{
-color:#00e676;
-}
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
 
-.hero p{
-color:#aeb9c5;
-font-size:18px;
-max-width:700px;
-}
+    .hero h1 span {
+      color: #35d0ba;
+    }
 
-.alert{
-margin:24px 6%;
-padding:18px 20px;
-background:#111b25;
-border:1px solid #263442;
-border-left:4px solid #00e676;
-border-radius:8px;
-}
+    .hero p {
+      color: #a9b7c6;
+      max-width: 700px;
+      margin: auto;
+      font-size: 17px;
+    }
 
-.alert b{
-color:#00e676;
-}
+    .alert {
+      margin: 30px 7%;
+      padding: 18px 22px;
+      border: 1px solid #2a465e;
+      background: #0d1c2c;
+      border-radius: 10px;
+      color: #dbe7f0;
+    }
 
-section{
-padding:35px 6%;
-}
+    .section {
+      padding: 55px 7%;
+    }
 
-h2{
-font-size:27px;
-margin-bottom:22px;
-}
+    .section h2 {
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-}
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
 
-.card{
-background:#101923;
-border:1px solid #263442;
-border-radius:12px;
-padding:20px;
-}
+    .card {
+      background: #0d1a29;
+      border: 1px solid #1b344a;
+      border-radius: 12px;
+      padding: 22px;
+      transition: 0.3s;
+    }
 
-.card h3{
-margin:0;
-font-size:18px;
-}
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #35d0ba;
+    }
 
-.symbol{
-color:#8f9ba8;
-font-size:13px;
-margin-top:5px;
-}
+    .card h3 {
+      margin-bottom: 12px;
+    }
 
-.price{
-font-size:27px;
-font-weight:bold;
-margin:15px 0 5px;
-}
+    .price {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
 
-.change{
-font-size:14px;
-font-weight:bold;
-}
+    .up {
+      color: #35d0ba;
+    }
 
-.green{
-color:#00e676;
-}
+    .muted {
+      color: #91a2b3;
+      font-size: 14px;
+    }
 
-.red{
-color:#ff5b6b;
-}
+    .chart {
+      height: 90px;
+      margin-top: 18px;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid #183248;
+    }
 
-.chart{
-height:100px;
-margin-top:18px;
-position:relative;
-overflow:hidden;
-border-bottom:1px solid #344452;
-}
+    .chart svg {
+      width: 100%;
+      height: 100%;
+    }
 
-.chart svg{
-width:100%;
-height:100%;
-}
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
 
-.news{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-}
+    .news {
+      background: #0d1a29;
+      border: 1px solid #1b344a;
+      border-radius: 12px;
+      padding: 22px;
+    }
 
-.news-card{
-background:#101923;
-border:1px solid #263442;
-border-radius:12px;
-padding:22px;
-}
+    .news h3 {
+      margin-bottom: 10px;
+    }
 
-.tag{
-color:#00e676;
-font-size:12px;
-font-weight:bold;
-}
+    .news p {
+      color: #9cadbd;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
 
-.news-card h3{
-font-size:20px;
-margin:10px 0;
-}
+    .news a {
+      color: #35d0ba;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.news-card p{
-color:#aeb9c5;
-font-size:14px;
-}
+    .contact {
+      text-align: center;
+      background: #0b1726;
+      padding: 60px 7%;
+      border-top: 1px solid #1c3148;
+    }
 
-.button{
-display:inline-block;
-margin-top:12px;
-background:#00e676;
-color:#061009;
-padding:10px 16px;
-border-radius:6px;
-text-decoration:none;
-font-weight:bold;
-font-size:13px;
-}
+    .contact h2 {
+      margin-bottom: 12px;
+    }
 
-.contact{
-background:#101923;
-border:1px solid #263442;
-border-radius:12px;
-padding:25px;
-}
+    .email {
+      color: #35d0ba;
+      font-size: 18px;
+      text-decoration: none;
+    }
 
-.contact p{
-color:#aeb9c5;
-}
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #718397;
+      font-size: 13px;
+      background: #050d16;
+    }
 
-.contact a{
-color:#00e676;
-text-decoration:none;
-}
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-footer{
-margin-top:35px;
-padding:30px;
-text-align:center;
-background:#05090d;
-border-top:1px solid #263442;
-color:#8995a3;
-}
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-@media(max-width:900px){
-.cards{
-grid-template-columns:repeat(2,1fr);
-}
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
 
-.news{
-grid-template-columns:1fr;
-}
-}
+      nav a {
+        margin: 0 7px;
+      }
 
-@media(max-width:600px){
-nav{
-display:none;
-}
+      .hero h1 {
+        font-size: 36px;
+      }
 
-.hero h1{
-font-size:35px;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-section{
-padding:30px 5%;
-}
-
-.alert{
-margin:20px 5%;
-}
-}
-</style>
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
+  <div class="logo">MARKET <span>PULSE</span></div>
 
-<div class="logo">
-MARKET <span>PULSE</span>
-</div>
-
-<nav>
-<a href="#markets">Markets</a>
-<a href="#news">News</a>
-<a href="#contact">Contact</a>
-</nav>
-
+  <nav>
+    <a href="#markets">Markets</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-
-<div class="hero">
-
-<h1>
-Global Markets.<br>
-<span>Real-Time Trading Intelligence.</span>
-</h1>
-
-<p>
-Stocks, Crypto, Gold and Forex market updates, trading alerts and important market levels — all in one place.
-</p>
-
-</div>
-
+<section class="hero">
+  <h1>Global <span>Market Pulse</span></h1>
+  <p>
+    Latest market news, trading updates, crypto alerts,
+    stocks, gold and forex market insights — all in one place.
+  </p>
+</section>
 
 <div class="alert">
-
-<b>⚡ LIVE MARKET ALERT</b><br>
-Markets can move quickly. Always check live prices before making trading decisions.
-
+  ⚠️ <strong>Market Alert:</strong>
+  Markets can move quickly. Always check live prices and manage risk before making a trade.
 </div>
 
+<section class="section" id="markets">
+  <h2>📊 Market Watch</h2>
 
-<section id="markets">
+  <div class="cards">
 
-<h2>📊 Live Market Watch</h2>
+    <div class="card">
+      <h3>₿ Bitcoin</h3>
+      <div class="price">$80,000</div>
+      <div class="up">Market Watch</div>
+      <div class="muted">BTC / USDT</div>
 
-<div class="cards">
+      <div class="chart">
+        <svg viewBox="0 0 400 100" preserveAspectRatio="none">
+          <polyline
+            points="0,80 40,70 80,76 120,55 160,62 200,40 240,50 280,30 320,42 360,20 400,28"
+            fill="none"
+            stroke="#35d0ba"
+            stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
 
+    <div class="card">
+      <h3>Ξ Ethereum</h3>
+      <div class="price">$4,000</div>
+      <div class="up">Market Watch</div>
+      <div class="muted">ETH / USDT</div>
 
-<div class="card">
+      <div class="chart">
+        <svg viewBox="0 0 400 100" preserveAspectRatio="none">
+          <polyline
+            points="0,70 50,60 90,68 130,45 170,52 210,35 250,45 300,25 350,38 400,18"
+            fill="none"
+            stroke="#35d0ba"
+            stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
 
-<h3>₿ Bitcoin</h3>
+    <div class="card">
+      <h3>🪙 Gold</h3>
+      <div class="price">$3,500</div>
+      <div class="up">Market Watch</div>
+      <div class="muted">XAU / USD</div>
 
-<div class="symbol">BTC / USD</div>
+      <div class="chart">
+        <svg viewBox="0 0 400 100" preserveAspectRatio="none">
+          <polyline
+            points="0,75 45,65 90,70 130,58 170,62 215,45 255,52 300,35 350,40 400,25"
+            fill="none"
+            stroke="#35d0ba"
+            stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
 
-<div class="price">$80,000</div>
+    <div class="card">
+      <h3>📈 S&P 500</h3>
+      <div class="price">Market Index</div>
+      <div class="up">Market Watch</div>
+      <div class="muted">US Stocks</div>
 
-<div class="change green">▲ Market Focus</div>
+      <div class="chart">
+        <svg viewBox="0 0 400 100" preserveAspectRatio="none">
+          <polyline
+            points="0,65 50,55 100,62 150,48 200,55 250,35 300,45 350,30 400,38"
+            fill="none"
+            stroke="#35d0ba"
+            stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
 
-<div class="chart">
-<svg viewBox="0 0 400 120" preserveAspectRatio="none">
-<polyline
-points="0,90 35,80 70,88 105,60 140,72 175,45 210,55 245,35 280,48 315,25 350,38 400,15"
-fill="none"
-stroke="#00e676"
-stroke-width="4"/>
-</svg>
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h3>Ξ Ethereum</h3>
-
-<div class="symbol">ETH / USD</div>
-
-<div class="price">$4,000</div>
-
-<div class="change green">▲ Crypto Market</div>
-
-<div class="chart">
-<svg viewBox="0 0 400 120" preserveAspectRatio="none">
-<polyline
-points="0,85 40,70 80,78 120,55 160,65 200,40 240,52 280,30 320,45 360,25 400,35"
-fill="none"
-stroke="#00e676"
-stroke-width="4"/>
-</svg>
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h3>🥇 Gold</h3>
-
-<div class="symbol">XAU / USD</div>
-
-<div class="price">$3,500</div>
-
-<div class="change green">▲ Precious Metals</div>
-
-<div class="chart">
-<svg viewBox="0 0 400 120" preserveAspectRatio="none">
-<polyline
-points="0,80 40,75 80,60 120,68 160,50 200,55 240,40 280,48 320,30 360,38 400,22"
-fill="none"
-stroke="#00e676"
-stroke-width="4"/>
-</svg>
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h3>📈 S&P 500</h3>
-
-<div class="symbol">US STOCK INDEX</div>
-
-<div class="price">Market Index</div>
-
-<div class="change green">▲ US Stocks</div>
-
-<div class="chart">
-<svg viewBox="0 0 400 120" preserveAspectRatio="none">
-<polyline
-points="0,90 40,82 80,85 120,65 160,70 200,52 240,58 280,40 320,48 360,30 400,20"
-fill="none"
-stroke="#00e676"
-stroke-width="4"/>
-</svg>
-</div>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
+<section class="section" id="news">
+  <h2>🔥 Latest Market Updates</h2>
 
-<section id="news">
+  <div class="news-grid">
 
-<h2>📰 Latest Market Updates</h2>
+    <div class="news">
+      <h3>Crypto Market Update</h3>
+      <p>
+        Bitcoin, Ethereum and major crypto assets remain
+        in focus as traders watch key resistance and support levels.
+      </p>
+      <a href="https://tradingjournaledge.blogspot.com/" target="_blank">
+        Read Market News →
+      </a>
+    </div>
 
-<div class="news">
+    <div class="news">
+      <h3>Stock Market Watch</h3>
+      <p>
+        U.S. stocks remain sensitive to economic data,
+        interest-rate expectations and Federal Reserve signals.
+      </p>
+      <a href="https://tradingjournaledge.blogspot.com/" target="_blank">
+        Read Market News →
+      </a>
+    </div>
 
+    <div class="news">
+      <h3>Gold & Forex</h3>
+      <p>
+        Gold and major currency pairs remain on traders'
+        watchlists as global markets react to economic developments.
+      </p>
+      <a href="https://tradingjournaledge.blogspot.com/" target="_blank">
+        Read Market News →
+      </a>
+    </div>
 
-<div class="news-card">
-
-<div class="tag">CRYPTO</div>
-
-<h3>Bitcoin Traders Watch Key Resistance</h3>
-
-<p>
-Bitcoin remains in focus as traders watch important price levels and market momentum.
-</p>
-
-<a class="button"
-href="https://tradingjournaledge.blogspot.com/"
-target="_blank">
-Read Full Update →
-</a>
-
-</div>
-
-
-<div class="news-card">
-
-<div class="tag">STOCKS</div>
-
-<h3>US Stock Market in Focus</h3>
-
-<p>
-Investors are watching economic data, interest rates and corporate developments.
-</p>
-
-<a class="button"
-href="https://tradingjournaledge.blogspot.com/"
-target="_blank">
-Read Full Update →
-</a>
-
-</div>
-
-
-<div class="news-card">
-
-<div class="tag">GOLD & FOREX</div>
-
-<h3>Global Markets Stay in Focus</h3>
-
-<p>
-Gold, currencies and global economic developments remain important for traders.
-</p>
-
-<a class="button"
-href="https://tradingjournaledge.blogspot.com/"
-target="_blank">
-Read Full Update →
-</a>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
+<section class="contact" id="contact">
+  <h2>📩 Contact</h2>
 
-<section id="contact">
+  <p>
+    For market content, website updates or business inquiries:
+  </p>
 
-<h2>📧 Contact Market Pulse</h2>
+  <br>
 
-<div class="contact">
+  <a class="email" href="mailto:mrdevilhaiderali@gmail.com">
+    mrdevilhaiderali@gmail.com
+  </a>
 
-<p>
-For market-related updates, website inquiries and collaboration:
-</p>
-
-<p>
-<a href="mailto:YOUR-EMAIL@gmail.com">
-mrdevilhaiderali@gmail.com
-</a>
-</p>
-
-</div>
-
+  <p style="margin-top:20px; color:#91a2b3;">
+    Developed by <strong>SYED HAIDER ALI ZAIDI</strong>
+  </p>
 </section>
-
 
 <footer>
-
-<strong>MARKET PULSE</strong>
-
-<br><br>
-
-Stocks • Crypto • Gold • Forex
-
-<br><br>
-
-© 2026 Market Pulse. All Rights Reserved.
-
+  © 2026 Market Pulse — Market News & Trading Updates
 </footer>
 
 </body>
