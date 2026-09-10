@@ -534,12 +534,17 @@ updateGold();
 setInterval(updateETH, 10000);
 setInterval(updateGold, 10000);
 </script>
-  <script>
+<script>
 async function updateSP500() {
   try {
+    const yahooURL =
+      "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?interval=1m&range=1d";
+
     const response = await fetch(
-      "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?interval=1m&range=1d"
+      "https://corsproxy.io/?url=" + encodeURIComponent(yahooURL)
     );
+
+    if (!response.ok) throw new Error("API error");
 
     const data = await response.json();
     const price = data.chart.result[0].meta.regularMarketPrice;
