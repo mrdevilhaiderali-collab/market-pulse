@@ -546,38 +546,42 @@ async function updateSP500() {
   const priceElement = document.getElementById("sp500-price");
 
   try {
-    const url =
-      "https://financialdata.net/api/v1/index-quotes?identifiers=%5EGSPC";
-
-    const response = await fetch(url, {
-      cache: "no-store"
-    });
+    const response = await fetch(
+      "https://www.sharpe.ai/api/markets/indices/SPX",
+      {
+        cache: "no-store"
+      }
+    );
 
     if (!response.ok) {
-      throw new Error("S&P 500 API error");
+      throw new Error("API error");
     }
 
     const data = await response.json();
 
-    if (!data || !data[0] || !data[0].price) {
-      throw new Error("No S&P 500 price");
+    const price =
+      data.price ??
+      data.last ??
+      data.close ??
+      data.value;
+
+    if (price === undefined || price === null) {
+      throw new Error("Price not found");
     }
 
-    const price = Number(data[0].price);
-
-    priceElement.textContent = price.toLocaleString("en-US", {
+    priceElement.textContent = Number(price).toLocaleString("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     });
 
   } catch (error) {
-    console.log("S&P 500 update error:", error);
+    console.log("S&P 500:", error);
     priceElement.textContent = "Market data unavailable";
   }
 }
 
 updateSP500();
-setInterval(updateSP500, 10000);
+setInterval(updateSP500, 30000);
 </script>
 
 </body>
