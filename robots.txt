@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mrdevilhaiderali-collab.github.io/market-pulse/sitemap.xml
